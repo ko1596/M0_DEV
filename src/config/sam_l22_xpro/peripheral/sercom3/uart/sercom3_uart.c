@@ -747,7 +747,6 @@ void 	UartDataRx_RadarA_CMD( void )
 				#if  Tst_PRE_SHOOT_ENABLE
 
 					//	PreShooting		==========================================
-                    Radar_Hanlder();
 					if( IsCapture( (M0_RADAR_FRAME*)&M0_AllDevStatus.radar_A ) != 0 )	{
 						UartDataTx_M0toM4_DevData( uart_RSP_DEV_STATUS, SUBTYPE_RADAR_A, (uint8_t*)&(M0_AllDevStatus.radar_A), sizeof(M0_RADAR_FRAME) );
 					}  	//if( IsCapture(M0_AllDevStatus.radar_A.data) != 0 )	{
@@ -763,7 +762,7 @@ void 	UartDataRx_RadarA_CMD( void )
 				#else  	//Tst_PRE_SHOOT_ENABLE
 					//	20211014-031270  ---------------------------------------
 					//M0_AllDevStatus.radar_A.pre_Result = M0_AllDevStatus.radar_A.data.Result;
-
+                        
 					if( M0_AllDevStatus.radar_A.data.Result == 0 )		{
 						M0_AllDevStatus.radar_A.pre_car = M0_AllDevStatus.radar_A.car;
 						M0_AllDevStatus.radar_A.car = 0;
